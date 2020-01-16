@@ -1,0 +1,10 @@
+D:\project\c#\license\License\Application\obj\Debug\Appl.csprojAssemblyReference.cache
+D:\project\c#\license\License\Application\obj\Debug\Appl.csproj.GenerateResource.cache
+D:\project\c#\license\License\Application\obj\Debug\Appl.csproj.CoreCompileInputs.cache
+D:\project\c#\license\License\Application\bin\Debug\Appl.exe.config
+D:\project\c#\license\License\Application\bin\Debug\Appl.exe
+D:\project\c#\license\License\Application\bin\Debug\Appl.pdb
+D:\project\c#\license\License\Application\obj\Debug\Appl.Properties.Resources.resources
+D:\project\c#\license\License\Application\obj\Debug\Appl.exe
+D:\project\c#\license\License\Application\obj\Debug\Appl.pdb
+D:\project\c#\license\License\Application\obj\Debug\Appl.FormApp.resources

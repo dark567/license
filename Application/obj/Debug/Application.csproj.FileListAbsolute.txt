@@ -1,0 +1,4 @@
+D:\project\c#\license\License\Application\obj\Debug\Application.csprojAssemblyReference.cache
+D:\project\c#\license\License\Application\obj\Debug\Application.Properties.Resources.resources
+D:\project\c#\license\License\Application\obj\Debug\Application.csproj.GenerateResource.cache
+D:\project\c#\license\License\Application\obj\Debug\Application.csproj.CoreCompileInputs.cache
