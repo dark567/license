@@ -7,3 +7,13 @@ D:\project\c#\license\License\KeyFileGenerator\obj\Debug\KeyFileGenerator.csproj
 D:\project\c#\license\License\KeyFileGenerator\obj\Debug\KeyFileGenerator.csproj.CoreCompileInputs.cache
 D:\project\c#\license\License\KeyFileGenerator\obj\Debug\KeyFileGenerator.exe
 D:\project\c#\license\License\KeyFileGenerator\obj\Debug\KeyFileGenerator.pdb
+D:\project\си шарп\license\license-master\KeyFileGenerator\bin\Debug\KeyFileGenerator.exe.config
+D:\project\си шарп\license\license-master\KeyFileGenerator\bin\Debug\KeyFileGenerator.exe
+D:\project\си шарп\license\license-master\KeyFileGenerator\bin\Debug\KeyFileGenerator.pdb
+D:\project\си шарп\license\license-master\KeyFileGenerator\obj\Debug\KeyFileGenerator.csprojAssemblyReference.cache
+D:\project\си шарп\license\license-master\KeyFileGenerator\obj\Debug\KeyFileGenerator.FormKeyTest.resources
+D:\project\си шарп\license\license-master\KeyFileGenerator\obj\Debug\KeyFileGenerator.Properties.Resources.resources
+D:\project\си шарп\license\license-master\KeyFileGenerator\obj\Debug\KeyFileGenerator.csproj.GenerateResource.cache
+D:\project\си шарп\license\license-master\KeyFileGenerator\obj\Debug\KeyFileGenerator.csproj.CoreCompileInputs.cache
+D:\project\си шарп\license\license-master\KeyFileGenerator\obj\Debug\KeyFileGenerator.exe
+D:\project\си шарп\license\license-master\KeyFileGenerator\obj\Debug\KeyFileGenerator.pdb

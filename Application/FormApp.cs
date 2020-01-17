@@ -18,15 +18,17 @@ namespace Appl
             CryptoClass crypto = new CryptoClass();
             if (!crypto.Form_LoadTrue()) Close();
 
+            string date = crypto.GetDecodeKey("keyfile.dat").Substring(crypto.GetDecodeKey("keyfile.dat").IndexOf("|") + 1);
+
+            
+            if (DateTime.Parse(date) < DateTime.Now) Close();
+
             string decryptstring = crypto.GetDecodeKey("keyfile.dat");
             int number = decryptstring.IndexOf("|");
             decryptstring = decryptstring.Substring(0, number);
 
             textBox1.Text = crypto.GetDecodeKey("keyfile.dat");
-
             textBox2.Text = decryptstring;
-
-            string date = crypto.GetDecodeKey("keyfile.dat").Substring(crypto.GetDecodeKey("keyfile.dat").IndexOf("|") + 1);
             textBox3.Text = date;
         }
 

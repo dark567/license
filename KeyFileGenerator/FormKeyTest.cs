@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Management;
@@ -66,7 +67,7 @@ namespace KeyFileGenerator
             this.Text = "KeyFileGenerator for MON08 v1.0.0.0 by Dark";
             //Данные с целевого компьютера
             string date = DateTime.Now.ToShortDateString().ToString();
-            string number = GetMotherBoardID() + /*GetProcessorID() +*/ GetVolumeSerial() + "|" + date;
+            string number = GetMotherBoardID() + /*GetProcessorID() +*/ GetVolumeSerial() + "|" + dateTimePicker1.Value.ToShortDateString();
             textBox1.Text = number;
         }
         void button1_Click(object sender, EventArgs e)
@@ -112,6 +113,17 @@ namespace KeyFileGenerator
         private void Button2_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void Button1_Click_1(object sender, EventArgs e)
+        {
+           // MessageBox.Show(dateTimePicker1.Value.ToShortDateString(), "Key Generator");
+        }
+
+        private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            string number = GetMotherBoardID() + /*GetProcessorID() +*/ GetVolumeSerial() + "|" + dateTimePicker1.Value.ToShortDateString();
+            textBox1.Text = number;
         }
     }
 }
