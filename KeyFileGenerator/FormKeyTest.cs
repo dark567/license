@@ -98,7 +98,7 @@ namespace KeyFileGenerator
                 key[i] = 0x1f;
             Rijndael.Key = key;
             ICryptoTransform transformer = Rijndael.CreateEncryptor();
-            using (FileStream fs = File.Open(path, FileMode.Open))
+            using (FileStream fs = File.Open(path, FileMode.OpenOrCreate))
             {
                 fs.Write(Rijndael.IV, 0, Rijndael.IV.Length);
                 CryptoStream cs = new CryptoStream(fs, transformer, CryptoStreamMode.Write);
