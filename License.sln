@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appl", "Application\Appl.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyFileGenerator", "KeyFileGenerator\KeyFileGenerator.csproj", "{AB69545A-940F-4B3D-AA41-D46589351BAC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{9CE6CE97-295E-48B0-9687-5CBC5601879D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{AB69545A-940F-4B3D-AA41-D46589351BAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB69545A-940F-4B3D-AA41-D46589351BAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB69545A-940F-4B3D-AA41-D46589351BAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CE6CE97-295E-48B0-9687-5CBC5601879D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CE6CE97-295E-48B0-9687-5CBC5601879D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CE6CE97-295E-48B0-9687-5CBC5601879D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CE6CE97-295E-48B0-9687-5CBC5601879D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

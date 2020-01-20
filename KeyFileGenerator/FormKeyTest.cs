@@ -86,27 +86,57 @@ namespace KeyFileGenerator
                 dialog.Filter = "dat files(*.dat)|*.dat";
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
+                    //GenerelKey(textBox1.Text, dialog.FileName);
                     GetKeyFile(textBox1.Text, dialog.FileName);
                     MessageBox.Show("Файл ключа создан.", "Key Generator");
                 }
             }
         }
+        //public void GetKeyFile(string inString, string path)
+        //{
+        //    byte[] key = new byte[0x20];
+        //    for (int i = 0; i <= 0x1f; i++)
+        //        key[i] = 0x1f;
+        //    Rijndael.Key = key;
+        //    ICryptoTransform transformer = Rijndael.CreateEncryptor();
+        //    using (FileStream fs = File.Open(path, FileMode.OpenOrCreate))
+        //    {
+        //        fs.Write(Rijndael.IV, 0, Rijndael.IV.Length);
+        //        CryptoStream cs = new CryptoStream(fs, transformer, CryptoStreamMode.Write);
+        //        StreamWriter sw = new StreamWriter(cs, Encoding.UTF8);
+        //        sw.Write(inString);
+        //        sw.Flush();
+        //        cs.FlushFinalBlock();
+        //        sw.Close();
+
+        //    }
+        //}
+
         public void GetKeyFile(string inString, string path)
         {
-            byte[] key = new byte[0x20];
-            for (int i = 0; i <= 0x1f; i++)
-                key[i] = 0x1f;
-            Rijndael.Key = key;
-            ICryptoTransform transformer = Rijndael.CreateEncryptor();
-            using (FileStream fs = File.Open(path, FileMode.OpenOrCreate))
+            try
             {
-                fs.Write(Rijndael.IV, 0, Rijndael.IV.Length);
-                CryptoStream cs = new CryptoStream(fs, transformer, CryptoStreamMode.Write);
-                StreamWriter sw = new StreamWriter(cs);
-                sw.Write(inString);
-                sw.Flush();
-                cs.FlushFinalBlock();
-                sw.Close();
+                using (var rijndaelManaged = new RijndaelManaged())
+                using (FileStream fStream = new FileStream(path, FileMode.OpenOrCreate))
+                {
+                    byte[] key = new byte[0x20];
+                    for (int i = 0; i <= 0x1f; i++)
+                        key[i] = 0x1f;
+                    rijndaelManaged.Key = key;
+
+                    fStream.Write(rijndaelManaged.IV, 0, rijndaelManaged.IV.Length);
+
+                    using (var encryptor = rijndaelManaged.CreateEncryptor())
+                    using (var cStream = new CryptoStream(fStream, encryptor, CryptoStreamMode.Write))
+                    using (var writer = new StreamWriter(cStream, Encoding.UTF8))
+                    {
+                        writer.Write(inString);
+                    }
+                }
+            }
+            catch (CryptographicException cException)
+            {
+                MessageBox.Show(cException.ToString(), "CryptographicException", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -117,7 +147,7 @@ namespace KeyFileGenerator
 
         private void Button1_Click_1(object sender, EventArgs e)
         {
-           // MessageBox.Show(dateTimePicker1.Value.ToShortDateString(), "Key Generator");
+            // MessageBox.Show(dateTimePicker1.Value.ToShortDateString(), "Key Generator");
         }
 
         private void DateTimePicker1_ValueChanged(object sender, EventArgs e)

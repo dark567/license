@@ -70,13 +70,26 @@ namespace Appl
             //Файл ключа присутствует
             if (File.Exists("keyfile.dat"))
             {
-                if (!DecodeKey(number, "keyfile.dat"))
+                if (!DecodeKey_(number, "keyfile.dat"))
                 {
                     MessageBox.Show("Файл ключа не верный!" + "\n" +
                                     "Данные скопированы в буфер обмена." + "\n" +
                                     "Сообщите их разработчику для получения файла ключа!",
                                     "Регистрация");
-                    Clipboard.SetText(number);
+                    try
+                    {
+                        Clipboard.SetText(number);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Ошибка записи в буфер",
+                                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning // for Warning  
+                                                                                                  //MessageBoxIcon.Error // for Error 
+                                                                                                  //MessageBoxIcon.Information  // for Information
+                                                                                                  //MessageBoxIcon.Question // for Question
+                                                   );
+                    }
+
                     return false;
                 }
             }
@@ -112,7 +125,7 @@ namespace Appl
                 Rijndael.IV = IV;
                 ICryptoTransform transformer = Rijndael.CreateDecryptor();
                 CryptoStream cs = new CryptoStream(fs, transformer, CryptoStreamMode.Read);
-                StreamReader sr = new StreamReader(cs);
+                StreamReader sr = new StreamReader(cs, Encoding.UTF8);
                 decryptstring = sr.ReadToEnd();
 
                 CryptoClass crypto = new CryptoClass();
@@ -124,6 +137,34 @@ namespace Appl
                 else
                     return true;
             }
+        }
+
+        public bool DecodeKey_(string inString, string path)
+        {
+            string decryptString;
+
+            using (var rijndaelManaged = new RijndaelManaged())
+            using (FileStream fStream = new FileStream(path, FileMode.Open))
+            {
+                
+
+                byte[] key = new byte[0x20];
+                for (int i = 0; i <= 0x1f; i++)
+                    key[i] = 0x1f;
+                rijndaelManaged.Key = key;
+
+                byte[] IV = new byte[rijndaelManaged.IV.Length];
+                fStream.Read(IV, 0, IV.Length);
+                rijndaelManaged.IV = IV;
+
+                using (var decryptor = rijndaelManaged.CreateDecryptor())
+                using (var cStream = new CryptoStream(fStream, decryptor, CryptoStreamMode.Read))
+                using (var reader = new StreamReader(cStream, Encoding.UTF8))
+                {
+                    decryptString = reader.ReadToEnd();
+                }
+            }
+            return decryptString == inString;
         }
 
         public string GetDecodeKey(string path)
@@ -140,7 +181,7 @@ namespace Appl
                 Rijndael.IV = IV;
                 ICryptoTransform transformer = Rijndael.CreateDecryptor();
                 CryptoStream cs = new CryptoStream(fs, transformer, CryptoStreamMode.Read);
-                StreamReader sr = new StreamReader(cs);
+                StreamReader sr = new StreamReader(cs, Encoding.UTF8);
                 decryptstring = sr.ReadToEnd();
                 return decryptstring;
             }
